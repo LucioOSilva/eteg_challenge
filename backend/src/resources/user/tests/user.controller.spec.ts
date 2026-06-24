@@ -2,18 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { ConflictException, NotFoundException } from '@nestjs/common';
 import { UserController } from '../user.controller';
 import { UserService } from '../user.service';
-import { User } from '../user.entity';
 import { CreateUserDto, UpdateUserColorDto } from '../dto/user.dto';
-
-const mockUser: User = {
-  id: 'uuid-123',
-  fullName: 'John Doe',
-  cpf: '352.028.590-82',
-  email: 'john@email.com',
-  favoriteColor: '#FF0000',
-  observations: null,
-  createdAt: new Date(),
-};
+import { mockUser } from './mock';
 
 const mockUserService = {
   createUser: jest.fn(),
