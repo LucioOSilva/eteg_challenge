@@ -1,8 +1,9 @@
-import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto, UpdateUserColorDto } from './dto/user.dto';
+import { regexFormatCPF, regexValidateCPF, regexValidateEmail } from '../../utils/regex.utils';
 
 @Injectable()
 export class UserService {
@@ -11,17 +12,28 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async createUser(dto: CreateUserDto) {
-    const exists = await this.userRepository.findOneBy({ email: dto.email });
+  async createUser(dto: CreateUserDto): Promise<User> {
+    if (!regexValidateEmail(dto.email)) {
+      throw new BadRequestException('E-mail inválido.');
+    }
 
+    if (!regexValidateCPF(dto.cpf)) {
+      throw new BadRequestException('CPF inválido.');
+    }
+
+    const exists = await this.userRepository.findOneBy({ email: dto.email });
     if (exists) {
       throw new ConflictException('User already exists');
     }
 
-    const user = this.userRepository.create(dto);
-    return await this.userRepository.save(user);
+    const user = this.userRepository.create({
+      ...dto,
+      cpf: regexFormatCPF(dto.cpf),
+    });
+
+    return this.userRepository.save(user);
   }
-  
+
   async updateUserColor(dto: UpdateUserColorDto): Promise<User> {
     const user = await this.userRepository.findOneBy({ id: dto.id });
 
@@ -32,5 +44,4 @@ export class UserService {
     user.favoriteColor = dto.favoriteColor;
     return this.userRepository.save(user);
   }
-
 }
