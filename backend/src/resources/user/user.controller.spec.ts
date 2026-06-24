@@ -2,8 +2,8 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { UserService } from './user.service';
 
-describe('AppController', () => {
-  let appController: UserController;
+describe('UserController', () => {
+  let userController: UserController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -11,12 +11,12 @@ describe('AppController', () => {
       providers: [UserService],
     }).compile();
 
-    appController = app.get<UserController>(UserController);
+    userController = app.get<UserController>(UserController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.setUserPreferences()).toBe('USER PREFERENCES');
+  describe('user', () => {
+    it('should return "XXX"', () => {
+      expect(userController.setUserPreferences()).toBe('XXX');
     });
   });
 });
