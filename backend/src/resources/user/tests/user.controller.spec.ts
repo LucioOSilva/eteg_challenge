@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ConflictException } from '@nestjs/common';
+import { ConflictException, NotFoundException } from '@nestjs/common';
 import { UserController } from '../user.controller';
 import { UserService } from '../user.service';
 import { User } from '../user.entity';
-import { CreateUserDto } from '../dto/user.dto';
+import { CreateUserDto, UpdateUserColorDto } from '../dto/user.dto';
 
 const mockUser: User = {
   id: 'uuid-123',
@@ -66,4 +66,26 @@ describe('UserController', () => {
     });
   });
 
+  describe('updateUser', () => {
+    const dto: UpdateUserColorDto = {
+      id: 'uuid-123',
+      favoriteColor: '#00FF00',
+    };
+
+    it('deve atualizar a cor com sucesso', async () => {
+      const updatedUser = { ...mockUser, favoriteColor: dto.favoriteColor };
+      mockUserService.updateUserColor.mockResolvedValue(updatedUser);
+
+      const result = await controller.updateUser(dto);
+
+      expect(mockUserService.updateUserColor).toHaveBeenCalledWith(dto);
+      expect(result.favoriteColor).toBe(dto.favoriteColor);
+    });
+
+    it('deve lançar NotFoundException se usuário não existe', async () => {
+      mockUserService.updateUserColor.mockRejectedValue(new NotFoundException());
+
+      await expect(controller.updateUser(dto)).rejects.toThrow(NotFoundException);
+    });
+  });
 });
