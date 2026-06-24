@@ -41,7 +41,7 @@ describe('UserService', () => {
       fullName: 'John Doe',
       email: 'john@email.com',
       favoriteColor: '#FF0000',
-      cpf: '12345678901',
+      cpf: '352.028.590-82',
     };
 
     it('deve criar um usuário com sucesso', async () => {
