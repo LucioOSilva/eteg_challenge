@@ -22,8 +22,8 @@ export class User {
   @Column({ name: 'favorite_color', length: 7 })
   favoriteColor!: string;
 
-  @Column({ type: 'text', nullable: true })
-  observations!: string | null;
+  @Column({ type: 'text', nullable: true, default: null })
+  observations?: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: Date;
