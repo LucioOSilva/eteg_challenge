@@ -1,8 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { Injectable, ConflictException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, UpdateUserColorDto } from './dto/user.dto';
 
 @Injectable()
 export class UserService {
@@ -22,8 +22,15 @@ export class UserService {
     return await this.userRepository.save(user);
   }
   
-  setUserPreferences(): string {
-    return 'USER PREFERENCES';
+  async updateUserColor(dto: UpdateUserColorDto): Promise<User> {
+    const user = await this.userRepository.findOneBy({ id: dto.id });
+
+    if (!user) {
+      throw new NotFoundException('User not found.');
+    }
+
+    user.favoriteColor = dto.favoriteColor;
+    return this.userRepository.save(user);
   }
 
 }
