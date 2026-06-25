@@ -2,6 +2,7 @@
 node_modules/
 **/node_modules/
 
+# Removi a exclusão do dotenv para o controle de versionamento para fins de praticidade ao executar o projeto teste
 # Environment
 # .env
 # **/.env
