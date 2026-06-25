@@ -42,5 +42,25 @@ services:
       db:
         condition: service_healthy
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      VITE_ENVIRONMENT: ${VITE_ENVIRONMENT}
+      VITE_PORT: ${VITE_PORT}
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    command: >
+      sh -c "if [ '$$VITE_ENVIRONMENT' = 'PRODUCTION' ];
+             then npm run build && npm run preview -- --port 3000 --host;
+             else npm run dev -- --host;
+             fi"
+    depends_on:
+      - backend
+
 volumes:
   pgdata:
