@@ -1,5 +1,5 @@
 import { useTheme } from '@/hooks';
-import { THEMES } from '@/components/context';
+import { THEMES } from '@/context';
 
 export const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();

@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { ThemeProvider } from '@/components/context';
+import { ThemeProvider } from '@/context';
 import { MainPage } from './components/pages';
 import './style/index.css';
 
