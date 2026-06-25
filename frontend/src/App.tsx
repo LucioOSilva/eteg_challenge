@@ -1,6 +1,6 @@
 import { type FC } from 'react';
-import './style/posthog.css';
 import { MainPage } from './components/pages';
+import './style/posthog.css';
 
 export const App: FC = () => {
   
