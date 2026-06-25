@@ -10,6 +10,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.useGlobalInterceptors(new RestResponseInterceptor());
   app.useGlobalFilters(new RestExceptionFilter());
+  app.enableCors({
+    origin: ['http://localhost:3000'],
+    methods: 'GET,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type, Authorization',
+  });
 
   await app.listen(process.env.PORT ?? 3333);
 }
