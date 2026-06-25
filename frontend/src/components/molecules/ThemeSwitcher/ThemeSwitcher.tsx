@@ -3,7 +3,7 @@ import { useTheme } from '@/hooks';
 import { THEMES } from '@/context';
 import { Select } from '@/components/atoms';
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
   const { theme, setTheme } = useTheme();
 
   const options = THEMES.map(t => ({ label: t, value: t }));
@@ -13,6 +13,6 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
   };
 
   return (
-    <Select value={theme} onValueChange={handleChange} options={options} />
+    <Select value={theme} onValueChange={handleChange} options={options} className={className} />
   );
 };
