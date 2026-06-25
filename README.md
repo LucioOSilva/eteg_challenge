@@ -50,7 +50,7 @@ npm run migration:run
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | /api/health-check | Health check |
-| GET | /api/list-users | List Users
+| GET | /api/users/list-paginated | List Users
 | POST | /api/users/create | Create user |
 | PATCH | /api/users/update-user-color | Update user color |
 
