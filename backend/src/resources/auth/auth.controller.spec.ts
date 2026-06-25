@@ -15,8 +15,8 @@ describe('AuthController', () => {
   });
 
   describe('auth', () => {
-    it('should return "XXX"', () => {
-      expect(authController.login()).toBe('XXX');
+    it('should return "LOGIN"', () => {
+      expect(authController.login()).toBe('LOGIN');
     });
   });
 });
