@@ -14,9 +14,16 @@ export class PaginationDto {
   limit?: number = 10;
 }
 
-export type PaginatedType<T> = {
-  data: T[];
-  total: number;
+export type PaginationMeta = {
+  totalItems: number;
   page: number;
   limit: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
+
+export type PaginatedType<T> = {
+  data: T[];
+  meta: PaginationMeta;
 }

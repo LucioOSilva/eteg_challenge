@@ -8,9 +8,9 @@ import { PaginationDto, PaginatedType } from '../../common/dto/pagination.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get()
-  getAllUsers(@Query() pagination: PaginationDto): Promise<PaginatedType<User>> {
-    return this.userService.getAllUsers(pagination);
+  @Get('/list-paginated')
+  getAllUsersPaginated(@Query() pagination: PaginationDto): Promise<PaginatedType<User>> {
+    return this.userService.getAllUsersPaginated(pagination);
   }
 
   @Post('/create')

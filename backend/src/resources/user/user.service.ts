@@ -13,18 +13,30 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async getAllUsers(pagination: PaginationDto): Promise<PaginatedType<User>> {
-    const { page = 1, limit = 10 } = pagination;
-    const skip = (page - 1) * limit;
+  async getAllUsersPaginated(pagination: PaginationDto): Promise<PaginatedType<User>> {
+  const { page = 1, limit = 10 } = pagination;
+  const skip = (page - 1) * limit;
 
-    const [data, total] = await this.userRepository.findAndCount({
-      order: { createdAt: 'DESC' },
-      skip,
-      take: limit,
-    });
+  const [data, totalItems] = await this.userRepository.findAndCount({
+    order: { createdAt: 'DESC' },
+    skip,
+    take: limit,
+  });
 
-    return { data, total, page, limit };
-  }
+  const totalPages = Math.ceil(totalItems / limit);
+
+  return {
+    data,
+    meta: {
+      totalItems,
+      page,
+      limit,
+      totalPages,
+      hasNextPage: page < totalPages,
+      hasPreviousPage: page > 1,
+    },
+  };
+}
 
   async createUser(dto: CreateUserDto): Promise<User> {
     if (!regexValidateEmail(dto.email)) {
