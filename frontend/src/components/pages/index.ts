@@ -1,1 +1,3 @@
-export { MainPage } from "./MainPage/MainPage";
+import { MainPage } from "./MainPage/MainPage";
+
+export { MainPage };
