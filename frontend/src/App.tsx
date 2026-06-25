@@ -1,10 +1,13 @@
 import { type FC } from 'react';
+import { ThemeProvider } from '@/components/context';
 import { MainPage } from './components/pages';
-import './style/posthog.css';
+import './style/index.css';
 
 export const App: FC = () => {
   
   return (
-    <MainPage />
+    <ThemeProvider defaultTheme="posthog">
+      <MainPage />
+    </ThemeProvider>
   )
 }
