@@ -36,7 +36,7 @@ describe('UserController', () => {
       fullName: 'John Doe',
       cpf: '352.028.590-82',
       email: 'john@email.com',
-      favoriteColor: '#FF0000',
+      favoriteColor: '#ff0000',
     };
 
     it('deve criar um usuário com sucesso', async () => {
@@ -59,7 +59,7 @@ describe('UserController', () => {
   describe('updateUser', () => {
     const dto: UpdateUserColorDto = {
       id: 'uuid-123',
-      favoriteColor: '#00FF00',
+      favoriteColor: '#00ff00',
     };
 
     it('deve atualizar a cor com sucesso', async () => {

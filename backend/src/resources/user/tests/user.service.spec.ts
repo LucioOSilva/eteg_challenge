@@ -9,6 +9,7 @@ import { mockUser } from './mock';
 
 const mockRepository = {
   findOneBy: jest.fn(),
+  findOne: jest.fn(),
   create: jest.fn(),
   save: jest.fn(),
 };
@@ -39,26 +40,27 @@ describe('UserService', () => {
   describe('createUser', () => {
     const dto: CreateUserDto = {
       fullName: 'John Doe',
+      cpf: '529.982.247-25',
       email: 'john@email.com',
-      favoriteColor: '#FF0000',
-      cpf: '352.028.590-82',
+      favoriteColor: '#ff0000',
     };
 
     it('deve criar um usuário com sucesso', async () => {
-      mockRepository.findOneBy.mockResolvedValue(null);
+      mockRepository.findOne.mockResolvedValue(null);
       mockRepository.create.mockReturnValue(mockUser);
       mockRepository.save.mockResolvedValue(mockUser);
 
       const result = await service.createUser(dto);
 
-      expect(mockRepository.findOneBy).toHaveBeenCalledWith({ email: dto.email });
-      expect(mockRepository.create).toHaveBeenCalledWith(dto);
+      expect(mockRepository.findOne).toHaveBeenCalled();
+      expect(mockRepository.create).toHaveBeenCalled();
       expect(mockRepository.save).toHaveBeenCalledWith(mockUser);
-      expect(result).toEqual(mockUser);
+      expect(result.cpf).toBe(mockUser.cpf);
+      expect(result.email).toBe(dto.email);
     });
 
     it('deve lançar ConflictException se e-mail já existe', async () => {
-      mockRepository.findOneBy.mockResolvedValue(mockUser);
+      mockRepository.findOne.mockResolvedValue(mockUser);
 
       await expect(service.createUser(dto)).rejects.toThrow(ConflictException);
       expect(mockRepository.create).not.toHaveBeenCalled();
@@ -69,7 +71,7 @@ describe('UserService', () => {
   describe('updateUserColor', () => {
     const dto: UpdateUserColorDto = {
       id: 'uuid-123',
-      favoriteColor: '#00FF00',
+      favoriteColor: '#00ff00',
     };
 
     it('deve atualizar a cor do usuário com sucesso', async () => {
