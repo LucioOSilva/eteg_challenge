@@ -1,0 +1,3 @@
+interface ThemeSwitcherProps {
+  className?: string
+}

@@ -1,12 +1,18 @@
+import { type FC } from 'react';
 import { useTheme } from '@/hooks';
 import { THEMES } from '@/context';
+import { Select } from '@/components/atoms';
 
-export const ThemeSwitcher = () => {
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = () => {
   const { theme, setTheme } = useTheme();
 
+  const options = THEMES.map(t => ({ label: t, value: t }));
+
+  const handleChange = (value: string) => {
+    setTheme(value as ThemeName);
+  };
+
   return (
-    <select value={theme} onChange={e => setTheme(e.target.value as ThemeName)}>
-      {THEMES.map(t => <option key={t} value={t}>{t}</option>)}
-    </select>
+    <Select value={theme} onValueChange={handleChange} options={options} />
   );
 };
