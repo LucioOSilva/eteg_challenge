@@ -13,9 +13,9 @@ Application for customer registration built with NestJS, React and PostgreSQL.
 - Node.js 22.x
 - Docker and Docker Compose
 
-##
-##
-##
+---
+---
+
 ## BACKEND - Getting Started
 
 ### 1. Clone the repository
@@ -60,7 +60,22 @@ npm run migration:run
 cd backend
 npm run test
 ```
-##
-##
-##
+
+---
+---
+
 ## FRONTEND - Getting Started
+The frontend is automatically served by Docker alongside the backend.
+
+After running `docker compose up --build`, (at `BACKEND - Getting Started`) access the app at:
+
+```bash
+http://localhost:3000
+```
+### 1. Environment variables
+
+```env
+This is not necessary - (.env file was added to version control)
+(💣Dont do this at home💣)
+```
+
