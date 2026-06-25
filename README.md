@@ -11,71 +11,101 @@ Application for customer registration built with NestJS, React and PostgreSQL.
 ## Requirements
 
 - Node.js 22.x
-- Docker and Docker Compose
+- Docker and Docker Compose *(required)*
+- Make *(optional, for first time setup shortcut)* — macOS: pre-installed · Linux/WSL: `sudo apt install make`
 
 ---
----
 
-## BACKEND - Getting Started
-
-### 1. Clone the repository
+## 1. Clone the repository
 
 ```bash
 git clone <repository-url>
 cd <repository-name>
 ```
 
-### 2. Configure environment variables
+---
+
+## 🚀 First time setup (optional shortcut)
+
+> Requires `make` installed. This command builds, starts all services and runs migrations automatically.
 
 ```bash
+make setup
+```
+
+#### If you choose this option, after the build just access:
+> `http://localhost:3000`
+
+---
+
+### OR — You can run the services separately as shown below.
+
+## Backend — Getting Started
+
+### 1. You have to be in the directory
+```
+backend
+```
+
+### 2. Configure environment variables
+
+```
 This is not necessary - (.env file was added to version control)
-(💣Dont do this at home💣)
+(💣 Dont do this at home 💣)
 ```
 
 ### 3. Start the application
 
 ```bash
-docker compose up --build
+docker compose -f backend/docker-compose.yml up --build
 ```
 
 ### 4. Run migrations
 
 ```bash
-cd backend
 npm run migration:run
 ```
 
-## API
+## 5. Running Tests
+
+```bash
+npm run test
+```
+
+## 6. API contracts
+
+_**base:**_
+> _localhost:3333_
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | /api/health-check | Health check |
-| GET | /api/users/list-paginated | List Users
+| GET | /api/users/list-paginated | List users paginated |
 | POST | /api/users/create | Create user |
 | PATCH | /api/users/update-user-color | Update user color |
 
-## Running Tests
-
-```bash
-cd backend
-npm run test
-```
-
----
 ---
 
-## FRONTEND - Getting Started
-The frontend is automatically served by Docker alongside the backend.
+## Frontend — Getting Started
 
-After running `docker compose up --build`, (at `BACKEND - Getting Started`) access the app at:
+The frontend is automatically served by Docker.
 
-```bash
-http://localhost:3000
+### 1. You have to be in the directory
 ```
-### 1. Environment variables
+frontend
+```
 
-```env
+### 2. Environment variables
+
+```
 This is not necessary - (.env file was added to version control)
-(💣Dont do this at home💣)
+(💣 Dont do this at home 💣)
 ```
 
+### 3. After running the backend, start the frontend:
+
+```bash
+docker compose -f frontend/docker-compose.yml up --build
+```
+
+Access the app at `http://localhost:3000`
