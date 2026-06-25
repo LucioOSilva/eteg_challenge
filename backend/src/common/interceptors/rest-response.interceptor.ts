@@ -14,7 +14,7 @@ export class RestResponseInterceptor implements NestInterceptor {
     const response = context.switchToHttp().getResponse<Response>();
 
     return next.handle().pipe(
-      map((data) => RESTResponse(response.statusCode, data?.data ?? data, data?.message ?? null)),
+      map((data) => RESTResponse(response.statusCode, data, null)),
     );
   }
 }
