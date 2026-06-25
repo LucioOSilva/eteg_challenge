@@ -14,11 +14,11 @@ export class UserService {
 
   async createUser(dto: CreateUserDto): Promise<User> {
     if (!regexValidateEmail(dto.email)) {
-      throw new BadRequestException('E-mail inválido.');
+      throw new BadRequestException('invalid E-mail');
     }
 
     if (!regexValidateCPF(dto.cpf)) {
-      throw new BadRequestException('CPF inválido.');
+      throw new BadRequestException('invalid CPF');
     }
 
     const exists = await this.userRepository.findOneBy({ email: dto.email });
