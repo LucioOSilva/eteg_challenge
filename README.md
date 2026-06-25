@@ -32,8 +32,13 @@ cd <repository-name>
 ```bash
 make setup
 ```
+and then
+```bash
+cd backend
+npm run migration:run
+```
 
-#### If you choose this option, after the build just access:
+#### If you choose this option, after the build and run the migration just access:
 > `http://localhost:3000`
 
 ---
