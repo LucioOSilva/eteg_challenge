@@ -1,11 +1,17 @@
-import { Body, Controller, HttpCode, HttpStatus, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, HttpStatus, Patch, Post, Query } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
 import { CreateUserDto, UpdateUserColorDto } from './dto/user.dto';
+import { PaginationDto, PaginatedType } from '../../common/dto/pagination.dto';
 
 @Controller('api/users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+
+  @Get()
+  getAllUsers(@Query() pagination: PaginationDto): Promise<PaginatedType<User>> {
+    return this.userService.getAllUsers(pagination);
+  }
 
   @Post('/create')
   @HttpCode(HttpStatus.CREATED)

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { User } from './user.entity';
 import { CreateUserDto, UpdateUserColorDto } from './dto/user.dto';
 import { regexFormatCPF, regexValidateCPF, regexValidateEmail } from '../../utils/regex.utils';
+import { PaginationDto, PaginatedType } from '../../common/dto/pagination.dto';
 
 @Injectable()
 export class UserService {
@@ -11,6 +12,19 @@ export class UserService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
+
+  async getAllUsers(pagination: PaginationDto): Promise<PaginatedType<User>> {
+    const { page = 1, limit = 10 } = pagination;
+    const skip = (page - 1) * limit;
+
+    const [data, total] = await this.userRepository.findAndCount({
+      order: { createdAt: 'DESC' },
+      skip,
+      take: limit,
+    });
+
+    return { data, total, page, limit };
+  }
 
   async createUser(dto: CreateUserDto): Promise<User> {
     if (!regexValidateEmail(dto.email)) {
