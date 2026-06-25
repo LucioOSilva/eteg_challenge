@@ -54,6 +54,7 @@ export class UserService {
 
     const user = this.userRepository.create({
       ...dto,
+      favoriteColor: dto.favoriteColor.toLocaleLowerCase(),
       cpf: regexFormatCPF(dto.cpf),
     });
 
@@ -67,7 +68,7 @@ export class UserService {
       throw new NotFoundException('User not found.');
     }
 
-    user.favoriteColor = dto.favoriteColor;
+    user.favoriteColor = dto.favoriteColor.toLocaleLowerCase();
     return this.userRepository.save(user);
   }
 }
