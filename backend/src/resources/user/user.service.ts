@@ -47,9 +47,16 @@ export class UserService {
       throw new BadRequestException('invalid CPF');
     }
 
-    const exists = await this.userRepository.findOneBy({ email: dto.email });
+    const exists = await this.userRepository.findOne({
+      where: [
+        { email: dto.email },
+        { cpf: regexFormatCPF(dto.cpf) },
+      ],
+    });
+
     if (exists) {
-      throw new ConflictException('User already exists');
+      const field = exists.email === dto.email ? 'E-mail' : 'CPF';
+      throw new ConflictException(`${field} already exists`);
     }
 
     const user = this.userRepository.create({
