@@ -7,6 +7,16 @@ import { Dialog } from '@/components/atoms';
 import { FormCustomer } from '@/components/organisms';
 import { Button } from '@/components/atoms';
 
+const header_mock = {
+  title: "Cadastro de cliente",
+  description: "Preencha os dados para registrar um novo cliente",
+};
+
+const user_mock = {
+  name: "John Doe",
+  role: "Admin",
+};
+
 export const CustomerTemplate: FC = () => {
   const {customersList, createCustomer} = useFormCustomer();
 
@@ -37,7 +47,13 @@ export const CustomerTemplate: FC = () => {
   return (
     <div className="bg-background">
       <div className="max-w-[1280px] mx-auto shadow-near bg-sidebar-accent h-screen px-xs md:px-m pt-m flex flex-col gap-4">
-        <Header className="p-4" children={HeaderChildren()} />
+        <Header
+          className="p-4"
+          children={HeaderChildren()}
+          title={header_mock.title}
+          description={header_mock.description}
+          userMinimalData={user_mock}
+          />
       </div>
     </div>
   );
