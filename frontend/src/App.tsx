@@ -7,7 +7,7 @@ import './style/index.css';
 export const App: FC = () => {
   
   return (
-    <ThemeProvider defaultTheme="posthog">
+    <ThemeProvider>
       <TooltipProvider>
         <MainPage />
       </TooltipProvider>
