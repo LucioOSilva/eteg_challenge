@@ -16,12 +16,13 @@ export const ColorPicker: FC<ColorPickerProps> = ({
   value,
   onChange,
   error,
-  hint
+  hint,
+  label
 }) => (
   <div className="flex flex-col gap-1.5">
     <div className="flex items-center gap-1.5">
       <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-        Cor preferida
+        {label}
       </label>
       <Tooltip
         childrenTrigger={
@@ -30,8 +31,8 @@ export const ColorPicker: FC<ColorPickerProps> = ({
           </span>
         }
         childrenContent={
-          <p className="text-xs max-w-56 leading-relaxed">
-            {hint}Selecione uma das cores do arco-íris.|||||||||||
+          <p className="text-xs leading-relaxed">
+            {hint}
           </p>
         }
       />

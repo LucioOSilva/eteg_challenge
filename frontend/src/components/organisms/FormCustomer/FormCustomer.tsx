@@ -156,6 +156,8 @@ export const FormCustomer: FC = () => {
             value={fields.favoriteColor}
             onChange={handleColorChange}
             error={errors.favoriteColor}
+            hint="Selecione uma das cores do arco-íris."
+            label="Cor preferida"
           />
         </section>
 
