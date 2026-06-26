@@ -114,3 +114,36 @@ docker compose -f frontend/docker-compose.yml up --build
 ```
 
 Access the app at `http://localhost:3000`
+
+---
+
+## E2E Tests — Cypress
+
+> Make sure the frontend is running at `http://localhost:3000` before running the tests.
+
+### 1. You have to be in the directory
+```
+frontend
+```
+
+### 2. Open Cypress interactive runner
+
+```bash
+npx cypress open
+```
+
+### 3. Or run headless (CI mode)
+
+```bash
+npx cypress run
+```
+
+### Test coverage
+
+| Test | Description |
+|------|-------------|
+| Header title | Checks that "Cadastro de cliente" is visible |
+| Add button | Checks that "Adicionar cliente" button is visible |
+| Customer counter | Checks that the customer count label is visible |
+| Customer list | Checks that cards are rendered or empty state is shown |
+| Card fields | Checks that CPF, Email, Cor favorita and Cadastrado em are visible |
