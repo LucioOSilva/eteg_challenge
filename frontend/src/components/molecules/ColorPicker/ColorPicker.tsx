@@ -12,7 +12,7 @@ const RAINBOW_COLORS: ColorSwatchOption[] = [
   { label: 'Violeta',  value: 'violeta',  hex: '#8E24AA' },
 ];
 
-export const ColorPickerField: FC<ColorPickerFieldProps> = ({
+export const ColorPicker: FC<ColorPickerProps> = ({
   value,
   onChange,
   error,
