@@ -1,3 +1,4 @@
+import { FormCustomer } from "./FormCustomer/FormCustomer";
 import { Header } from "./Header/Header";
 
-export { Header };
+export { FormCustomer, Header };
