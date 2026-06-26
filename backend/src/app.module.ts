@@ -21,7 +21,7 @@ import { User } from './resources/user/user.entity';
         password: config.get('DB_PASS', 'postgres'),
         database: config.get('DB_NAME', 'johndoe'),
         entities: [User],
-        synchronize: false,
+        synchronize: config.get('ENVIRONMENT') !== 'PRODUCTION',
         migrationsTableName: 'migrations',
         migrations: ['dist/migrations/*.js'],
       }),
