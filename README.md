@@ -62,7 +62,7 @@ This is not necessary - (.env file was added to version control)
 ### 3. Start the application
 
 ```bash
-docker compose -f backend/docker-compose.yml up --build
+docker compose docker-compose.yml up --build
 ```
 
 ### 4. Run migrations
@@ -110,7 +110,7 @@ This is not necessary - (.env file was added to version control)
 ### 3. After running the backend, start the frontend:
 
 ```bash
-docker compose -f frontend/docker-compose.yml up --build
+docker compose docker-compose.yml up --build
 ```
 
 Access the app at `http://localhost:3000`
