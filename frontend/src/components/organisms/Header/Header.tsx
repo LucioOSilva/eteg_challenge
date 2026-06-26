@@ -1,10 +1,8 @@
 import { type FC } from 'react';
 import { cn } from '@/lib/utils';
-import { Card, Dialog } from '@/components/atoms';
+import { Card } from '@/components/atoms';
 import { ThemeSwitcher } from "@/components/molecules";
-import { FormCustomer } from '@/components/organisms';
-import { UserCircle2, Users, PlusCircle, Palette } from 'lucide-react';
-import { Button } from '@/components/atoms';
+import { UserCircle2, Palette } from 'lucide-react';
 
 const header_mock = {
   title: "Cadastro de cliente",
@@ -16,40 +14,20 @@ const user_mock = {
   role: "Admin",
 };
 
-export const Header: FC<HeaderProps> = ({ className, totalCustomers, onCreateCustomer }) => {
+export const Header: FC<HeaderProps> = ({ className, children }) => {
   return (
     <Card>
       <section className={cn("flex justify-between items-start gap-4", className)}>
 
-        {/* Esquerda: título + ações */}
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-0.5">
             <h1 className="font-bold text-xl">{header_mock.title}</h1>
             <p className="text-sm text-muted-foreground">{header_mock.description}</p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <Dialog
-              childrenTrigger={
-                <Button size="sm" className="flex items-center gap-1.5">
-                  <PlusCircle className="w-4 h-4" />
-                  Adicionar cliente
-                </Button>
-              }
-              ChildrenTitle="Novo cliente"
-              childrenContent={<FormCustomer onCreateCustomer={onCreateCustomer} />}
-            />
-
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Users className="w-4 h-4" />
-              <span>
-                <span className="font-semibold text-foreground">{totalCustomers}</span> clientes cadastrados
-              </span>
-            </div>
-          </div>
+          {children}
         </div>
 
-        {/* Direita: usuário + tema */}
         <div className="flex flex-col items-end gap-3">
           <div className="flex items-center gap-2">
             <UserCircle2 className="w-5 h-5 text-muted-foreground" />
