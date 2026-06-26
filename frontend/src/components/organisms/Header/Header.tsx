@@ -23,10 +23,10 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           <p>{header_mock.description}</p>
         </div>
 
-        <div className="flex flex-col items-center gap-2">
-          <div className=''>
+        <div className="flex flex-col items-end gap-2">
+          <div className='flex flex-col items-end'>
             <p className="font-semibold">{user_mock.name}</p>
-            <p className="text-primary-foreground bg-primary rounded-full text-center border border-muted">{user_mock.role}</p>
+            <p className="text-primary-foreground bg-primary px-2 py-1 rounded-full text-center border border-muted">{user_mock.role}</p>
           </div>
         <ThemeSwitcher className="cursor-pointer hover:text-muted-foreground"/>
         </div>
