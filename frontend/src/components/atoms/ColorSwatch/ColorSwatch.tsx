@@ -3,7 +3,7 @@ import { type FC } from 'react';
 export const ColorSwatch: FC<ColorSwatchProps> = ({ color, selected, onClick }) => (
   <button
     type="button"
-    onClick={() => onClick(color.value)}
+    onClick={() => onClick(color.hex)}
     aria-pressed={selected}
     aria-label={color.label}
     className={[

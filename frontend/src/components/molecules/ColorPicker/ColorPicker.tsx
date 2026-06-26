@@ -43,7 +43,7 @@ export const ColorPicker: FC<ColorPickerProps> = ({
         <ColorSwatch
           key={color.value}
           color={color}
-          selected={value === color.value}
+          selected={value === color.hex}
           onClick={onChange}
         />
       ))}
