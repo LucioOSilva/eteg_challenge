@@ -17,7 +17,7 @@ const user_mock = {
 };
 
 export const CustomerTemplate: FC = () => {
-  const {isFormOpen, setIsFormOpen, customersList, createCustomer} = useFormCustomer();
+  const {isFormOpen, setIsFormOpen, customersList, createCustomer, updateCustomerColor } = useFormCustomer();
 
   const HeaderChildren = useCallback(() => {
     return (
@@ -57,7 +57,7 @@ export const CustomerTemplate: FC = () => {
         />
 
         <div className="flex-1 overflow-y-auto pb-4">
-          <CustomerList customers={customersList} />
+          <CustomerList customers={customersList} onEditColor={updateCustomerColor} />
         </div>
       </div>
     </div>
