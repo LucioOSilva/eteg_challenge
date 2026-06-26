@@ -5,10 +5,10 @@ import {
 } from '@/components/ui';
 
 
-export const Card: FC<CardProps> = ({ children }) => {
+export const Card: FC<CardProps> = ({ children, className, classNameContent }) => {
   return (
-    <CardUI>
-      <CardContent>
+    <CardUI className={className}>
+      <CardContent className={classNameContent}>
         {children}
       </CardContent>
     </CardUI>
