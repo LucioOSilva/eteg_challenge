@@ -13,6 +13,6 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
   };
 
   return (
-    <Select value={theme} onValueChange={handleChange} options={options} className={className} />
+    <Select value={theme} onValueChange={handleChange} options={options} className={className} position="popper"/>
   );
 };

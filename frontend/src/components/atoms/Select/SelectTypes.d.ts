@@ -13,4 +13,7 @@ interface SelectProps {
   className?: string;
   required?: boolean;
   capitalize?: boolean;
+  side?: "bottom" | "top" | "left" | "right";
+  sideOffset?: number;
+  position?: "popper" | "item-aligned";
 };

@@ -6,6 +6,7 @@ import {
   SelectValue,
 } from "@/components/ui";
 import { type FC } from "react";
+import { cn } from "@/lib/utils";
 
 export const Select: FC<SelectProps> = ({
   id,
@@ -16,7 +17,10 @@ export const Select: FC<SelectProps> = ({
   disabled = false,
   className,
   required,
-  capitalize = true
+  capitalize = true,
+  side,
+  sideOffset,
+  position
 }) => {
   return (
     <SelectUI
@@ -25,10 +29,10 @@ export const Select: FC<SelectProps> = ({
       disabled={disabled}
       required={required}
     >
-      <SelectTrigger className={className}>
+      <SelectTrigger className={cn("w-full", className)}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      <SelectContent id={id}>
+      <SelectContent id={id} side={side} sideOffset={sideOffset} position={position}>
         {options.map((option) => (
           <SelectItem key={option.value} value={option.value} className={capitalize ? 'capitalize' : ''}>
             {option.label}
