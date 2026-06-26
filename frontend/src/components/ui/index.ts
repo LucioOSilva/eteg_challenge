@@ -31,3 +31,5 @@ export {
 } from "./tooltip";
 
 export { Textarea } from "./textarea";
+
+export { Button, buttonVariants } from "./button";
