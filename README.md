@@ -12,7 +12,7 @@ Application for customer registration built with NestJS, React and PostgreSQL.
 
 - Node.js 22.x
 - Docker and Docker Compose *(required)*
-- Make *(optional, for first time setup shortcut)* — macOS: pre-installed · Linux/WSL: `sudo apt install make`
+- Make *(optional, for first time setup shortcut)*
 
 ---
 
