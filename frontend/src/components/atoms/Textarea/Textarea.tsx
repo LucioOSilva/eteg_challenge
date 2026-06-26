@@ -2,7 +2,7 @@ import { type FC } from 'react';
 import { Textarea as TextareaUI } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-export const Textarea: FC<TextareaFieldProps> = ({
+export const Textarea: FC<TextareaProps> = ({
   name,
   value,
   onChange,

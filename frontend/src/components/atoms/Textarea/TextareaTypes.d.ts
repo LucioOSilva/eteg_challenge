@@ -1,4 +1,4 @@
-interface TextareaFieldProps {
+interface TextareaProps {
   name: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
