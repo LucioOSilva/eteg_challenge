@@ -24,7 +24,7 @@ export const useFormCustomer = () => {
         addToast({
           type: 'error',
           title: 'Falha ao listar usuários',
-          description: error as string ?? 'Não foi possível carregar a lista de clientes.',
+          description: error instanceof Error ? error.message : 'Não foi possível carregar a lista de clientes.',
         });
       }
     };
@@ -40,7 +40,7 @@ export const useFormCustomer = () => {
       addToast({
         type: 'error',
         title: 'Falha ao criar cliente',
-        description: 'Não foi possível criar novo clientes, tente novamente.',
+        description: error instanceof Error ? error.message : 'Não foi possível criar novo clientes, tente novamente.',
       });
       return undefined;
     } finally {
@@ -57,7 +57,7 @@ export const useFormCustomer = () => {
       addToast({
         type: 'error',
         title: 'Falha ao atualizar a cor do cliente',
-        description: 'Não foi possível atualizar a cor do clientes, tente novamente.',
+        description: error instanceof Error ? error.message : 'Não foi possível atualizar a cor do clientes, tente novamente.',
       });
       return undefined;
     } finally {

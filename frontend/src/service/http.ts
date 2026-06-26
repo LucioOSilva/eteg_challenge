@@ -13,9 +13,11 @@ export async function request<T>(
     body: body ? JSON.stringify(body) : undefined,
   });
 
+  const json = await response.json();
+
   if (!response.ok) {
-    throw new Error(`HTTP error: ${response.status}`);
+    throw new Error(json?.message ?? `HTTP error: ${response.status}`);
   }
 
-  return response.json() as Promise<T>;
+  return json as T;
 }
