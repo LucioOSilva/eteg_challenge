@@ -13,7 +13,7 @@ type PaginatedType<T> = {
 };
 
 type RestResponse<T> = {
-  data?: T;
+  data: T;
   message?: string;
   status?: number;
 };

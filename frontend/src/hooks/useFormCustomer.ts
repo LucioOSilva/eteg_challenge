@@ -3,6 +3,7 @@ import * as CustomerService from '@/service/customer.service';
 import { useContextToaster } from "@/hooks";
 
 export const useFormCustomer = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const [isLoading, setIsloading] = useState({
     create: false,
     update: false
@@ -34,7 +35,16 @@ export const useFormCustomer = () => {
   const handleCreateCustomer = async (data: CreateCustomerPayload) => {
     try {
       setIsloading(prev => ({ ...prev, create: true }));
-      return await CustomerService.createCustomer(data);
+      const response = await CustomerService.createCustomer(data);
+      if (response?.data && response?.data) {
+        setCustomersList(prev => [...prev, response.data]);
+        addToast({
+          type: 'success',
+          title: 'Sucesso',
+          description: 'Cliente adicionado com sucesso',
+        });
+      }
+      setIsFormOpen(false);
     } catch (error) {
       console.error('Erro ao criar cliente');
       addToast({
@@ -66,9 +76,11 @@ export const useFormCustomer = () => {
   }
 
   return {
+    isFormOpen,
     isLoading,
     customersList,
     customersListPagination,
+    setIsFormOpen,
     createCustomer: handleCreateCustomer,
     updateCustomerColor: updateCustomerColor,
   };

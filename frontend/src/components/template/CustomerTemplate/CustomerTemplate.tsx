@@ -1,11 +1,10 @@
 import { type FC, useCallback } from "react";
 import { } from '@/hooks';
-import { Header } from "@/components/organisms";
 import { useFormCustomer } from "@/hooks";
 import { Users, PlusCircle } from 'lucide-react';
-import { Dialog } from '@/components/atoms';
-import { FormCustomer } from '@/components/organisms';
-import { Button } from '@/components/atoms';
+import { Button, Dialog } from '@/components/atoms';
+import { CustomerList } from '@/components/molecules';
+import { FormCustomer, Header } from '@/components/organisms';
 
 const header_mock = {
   title: "Cadastro de cliente",
@@ -18,12 +17,14 @@ const user_mock = {
 };
 
 export const CustomerTemplate: FC = () => {
-  const {customersList, createCustomer} = useFormCustomer();
+  const {isFormOpen, setIsFormOpen, customersList, createCustomer} = useFormCustomer();
 
   const HeaderChildren = useCallback(() => {
     return (
       <div className="flex items-center gap-3">
         <Dialog
+          open={isFormOpen}
+          onOpenChange={setIsFormOpen}
           childrenTrigger={
             <Button size="sm" className="flex items-center gap-1.5">
               <PlusCircle className="w-4 h-4" />
@@ -54,6 +55,8 @@ export const CustomerTemplate: FC = () => {
           description={header_mock.description}
           userMinimalData={user_mock}
           />
+
+        <CustomerList customers={customersList} />
       </div>
     </div>
   );

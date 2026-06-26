@@ -7,9 +7,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export const Dialog: FC<DialogProps> = ({ childrenTrigger, ChildrenTitle, childrenContent }) => {
+export const Dialog: FC<DialogProps> = ({ childrenTrigger, ChildrenTitle, childrenContent, open, onOpenChange }) => {
   return (
-    <DialogUI>
+    <DialogUI open={open} onOpenChange={onOpenChange}>
       <DialogTrigger>{childrenTrigger}</DialogTrigger>
       <DialogContent className="gap-0 pt-8">
         <DialogTitle>{ChildrenTitle}</DialogTitle>
