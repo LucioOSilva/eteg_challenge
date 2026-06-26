@@ -9,9 +9,9 @@ export {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from './select';
+} from "./select";
 
-export  {
+export {
   Card,
   CardHeader,
   CardFooter,
@@ -19,4 +19,13 @@ export  {
   CardAction,
   CardDescription,
   CardContent,
-} from './card';
+} from "./card";
+
+export { Input } from "./input";
+
+export {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./tooltip";

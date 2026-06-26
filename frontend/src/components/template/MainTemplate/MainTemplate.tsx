@@ -7,7 +7,7 @@ export const MainTemplate: FC<MainTemplateProps> = ({ children }) => {
     <div className="bg-background">
       <div className="max-w-[1280px] mx-auto shadow-near bg-sidebar-accent h-screen px-xs md:px-m pt-m">
         <Header className="p-4 "/>
-      
+        
         {children}
       </div>
     </div>
