@@ -2,20 +2,6 @@ import { type FC } from 'react';
 import { Input as InputUI } from '@/components/ui';
 import { Tooltip } from '@/components/atoms';
 
-interface InputFieldProps {
-  label: string;
-  tooltip?: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: string;
-  hint?: string;
-  placeholder?: string;
-  type?: string;
-  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
-  autoComplete?: string;
-}
-
 export const InputField: FC<InputFieldProps> = ({
   label,
   tooltip,
