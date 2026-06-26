@@ -30,6 +30,11 @@ cd <repository-name>
 > Requires `make` installed. This command builds, starts all services and runs migrations automatically.
 
 ```bash
+ # if you dont have you can isntall make on linux with
+ sudo apt update && sudo apt install build-essential -y
+```
+
+```bash
 make setup
 ```
 and then
