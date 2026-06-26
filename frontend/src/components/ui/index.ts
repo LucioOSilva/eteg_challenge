@@ -29,3 +29,5 @@ export {
   TooltipProvider,
   TooltipTrigger,
 } from "./tooltip";
+
+export { Textarea } from "./textarea";
