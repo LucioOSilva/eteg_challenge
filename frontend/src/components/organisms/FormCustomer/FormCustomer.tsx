@@ -33,7 +33,7 @@ const INITIAL_FIELDS: FormCustomerFields = {
 
 const INITIAL_ERRORS: FormCustomerErrors = {};
 
-export const FormCustomer: FC = () => {
+export const FormCustomer: FC<FormCustomerProps> = ({ onCreateCustomer }) => {
   const [fields, setFields] = useState<FormCustomerFields>(INITIAL_FIELDS);
   const [errors, setErrors] = useState<FormCustomerErrors>(INITIAL_ERRORS);
 
@@ -86,14 +86,14 @@ export const FormCustomer: FC = () => {
     if (!validate()) return;
 
     const payload = {
-      name: fields.name.trim(),
+      fullName: fields.name.trim(),
       cpf: fields.cpf,
       email: fields.email.trim(),
       favoriteColor: fields.favoriteColor,
       notes: fields.notes.trim(),
     };
 
-    console.log('[FormCustomer] payload:', payload);
+    onCreateCustomer?.(payload);
   };
 
   const handleClear = () => {

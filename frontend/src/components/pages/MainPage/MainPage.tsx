@@ -1,11 +1,12 @@
 import { type FC } from "react";
-import { FormCustomer } from '@/components/organisms';
 import { MainTemplate } from "@/components/template";
 
 export const MainPage: FC = () => {
   return (
+    // adicionar header
     <MainTemplate>
-      <FormCustomer />
+      <p>content</p>
     </MainTemplate>
+    // adicionar footer
   );
 };
