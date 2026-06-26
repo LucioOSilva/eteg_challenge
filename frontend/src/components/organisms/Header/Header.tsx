@@ -7,18 +7,17 @@ import { UserCircle2, Palette } from 'lucide-react';
 export const Header: FC<HeaderProps> = ({ className, children, title, description, userMinimalData }) => {
   return (
     <Card>
-      <section className={cn("flex justify-between items-start gap-4", className)}>
+      <section className={cn("flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start", className)}>
 
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-0.5">
             <h1 className="font-bold text-xl">{title}</h1>
             <p className="text-sm text-muted-foreground">{description}</p>
           </div>
-
           {children}
         </div>
 
-        <div className="flex flex-col items-end gap-3">
+        <div className="flex flex-row items-center justify-between sm:flex-col sm:items-end gap-3 shrink-0">
           <div className="flex items-center gap-2">
             <UserCircle2 className="w-5 h-5 text-muted-foreground" />
             <div className="flex flex-col items-end">
@@ -31,7 +30,7 @@ export const Header: FC<HeaderProps> = ({ className, children, title, descriptio
 
           <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
             <Palette className="w-4 h-4" />
-            <span>Tema</span>
+            <span className="hidden sm:inline">Tema</span>
             <ThemeSwitcher className="cursor-pointer hover:text-muted-foreground" />
           </div>
         </div>

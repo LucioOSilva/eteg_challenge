@@ -54,9 +54,11 @@ export const CustomerTemplate: FC = () => {
           title={header_mock.title}
           description={header_mock.description}
           userMinimalData={user_mock}
-          />
+        />
 
-        <CustomerList customers={customersList} />
+        <div className="flex-1 overflow-y-auto pb-4">
+          <CustomerList customers={customersList} />
+        </div>
       </div>
     </div>
   );
