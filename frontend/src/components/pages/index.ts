@@ -1,3 +1,3 @@
-import { MainPage } from "./MainPage/MainPage";
+import { CustomerPage } from "./CustomerPage/CustomerPage";
 
-export { MainPage };
+export { CustomerPage };

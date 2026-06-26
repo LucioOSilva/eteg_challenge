@@ -1,1 +1,1 @@
-export { MainTemplate } from './MainTemplate/MainTemplate';
+export { CustomerTemplate } from './CustomerTemplate/CustomerTemplate';
